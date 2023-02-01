@@ -182,7 +182,13 @@ const replyWithIntro = (ctx: any) =>
 
 bot.command("start", replyWithIntro);
 bot.on("message", replyWithIntro);
-
+bot.hears("ping", async (ctx) => {
+  // `reply` is an alias for `sendMessage` in the same chat (see next section).
+  await ctx.reply("pong", {
+    // `reply_to_message_id` specifies the actual reply feature.
+    reply_to_message_id: ctx.msg.message_id,
+  });
+});
 // Start the server
 if (process.env.NODE_ENV === "prod") {
   // Use Webhooks for the production server
