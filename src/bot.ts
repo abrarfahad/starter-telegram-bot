@@ -184,7 +184,7 @@ bot.command("start", replyWithIntro);
 bot.on("message", replyWithIntro);
 
 // Start the server
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "prod") {
   // Use Webhooks for the production server
   const app = express();
   app.use(express.json());
